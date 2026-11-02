@@ -1,0 +1,90 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: "Plus Jakarta Sans", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-ink: #0E1229;
+  --color-navy-950: #0B0F24;
+  --color-navy-900: #10152E;
+  --color-navy-800: #171D3B;
+  --color-navy-700: #232A4D;
+  --color-navy-600: #363E68;
+
+  --color-canvas: #F3F4FC;
+  --color-surface: #FFFFFF;
+
+  --color-brand-50: #EEF0FF;
+  --color-brand-100: #E0E3FF;
+  --color-brand-400: #7C82F0;
+  --color-brand-500: #5B5FEF;
+  --color-brand-600: #4A47DE;
+  --color-brand-700: #3B37B8;
+
+  --color-teal-400: #33D2C0;
+  --color-teal-500: #12B8A6;
+
+  --color-coral-400: #FF8A65;
+  --color-coral-500: #FF6F47;
+
+  --color-amber-400: #FFB84D;
+  --color-amber-500: #F59E0B;
+
+  --color-rose-500: #EF476F;
+
+  --shadow-soft: 0 1px 2px rgba(15, 18, 41, 0.04), 0 8px 24px -8px rgba(15, 18, 41, 0.10);
+  --shadow-card: 0 1px 1px rgba(15, 18, 41, 0.03), 0 12px 32px -12px rgba(15, 18, 41, 0.14);
+}
+
+@layer base {
+  html {
+    font-family: var(--font-body);
+  }
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+  }
+  .dark body {
+    background-color: var(--color-navy-950);
+    color: #E7E9F7;
+  }
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #D8DAF0; border-radius: 8px; }
+  ::-webkit-scrollbar-thumb:hover { background: #C2C5EA; }
+}
+
+@layer components {
+  .card {
+    background-color: var(--color-surface);
+    border-radius: 1.25rem;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(15, 18, 41, 0.04);
+  }
+  .dark .card {
+    background-color: var(--color-navy-900);
+    border-color: rgba(255, 255, 255, 0.06);
+  }
+  .btn-primary {
+    background-color: var(--color-brand-500);
+    color: white;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    transition: background-color 0.15s ease;
+  }
+  .btn-primary:hover { background-color: var(--color-brand-600); }
+}
+
+@theme inline {
+  --animate-fade-up: fade-up 0.5s ease both;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
